@@ -1,0 +1,130 @@
+recognizer:
+  # model_path: "models/model.onnx"
+  # model_path: "models/model.onnx"
+  model_path: "models/Conformer-CCTC-Char-th-mediumO0_contcv3-lr0.0001_ct0.5-1.0_warm25k-tune-augment--val_wer=0.1060-epoch=1-1.onnx" 
+  vocab: 
+    - ก
+    - ข
+    - ค
+    - ฆ
+    - ง
+    - จ
+    - ฉ
+    - ช
+    - ซ
+    - ฌ
+    - ญ
+    - ฎ
+    - ฏ
+    - ฐ
+    - ฑ
+    - ฒ
+    - ณ
+    - ด
+    - ต
+    - ถ
+    - ท
+    - ธ
+    - น
+    - บ
+    - ป
+    - ผ
+    - ฝ
+    - พ
+    - ฟ
+    - ภ
+    - ม
+    - ย
+    - ร
+    - ฤ
+    - ล
+    - ว
+    - ศ
+    - ษ
+    - ส
+    - ห
+    - ฬ
+    - อ
+    - ฮ
+    - ะ
+    - ั
+    - า
+    - ำ
+    - ิ
+    - ี
+    - ึ
+    - ื
+    - ุ
+    - ู
+    - เ
+    - แ
+    - โ
+    - ใ
+    - ไ
+    - ๅ
+    - ็
+    - ่
+    - ้
+    - ๊
+    - ๋
+    - ์
+    - a
+    - b
+    - c
+    - d
+    - e
+    - f
+    - g
+    - h
+    - i
+    - j
+    - k
+    - l
+    - m
+    - 'n'
+    - o
+    - p
+    - q
+    - r
+    - s
+    - t
+    - u
+    - v
+    - w
+    - x
+    - 'y'
+    - z
+    - ''''
+    - '#'
+  preprocessing:
+    sample_rate: 8000
+    n_fft: 512
+    win_length: 200
+    hop_length: 80
+    num_mels: 80
+  decoder:
+    # char_lm_path: "models/char_lm_6gram.bin"
+    # word_lm_path: "models/word_lm_3gram.bin"
+#     char_lm_path: "models/char-level-formatted.bin"
+#     word_lm_path: "models/word-level-formatted.bin"   
+    char_lm_path: "models/char-level-formatted_teev5.bin"
+    word_lm_path: "models/word-level-formatted_teev5.bin"
+    alpha: 0.5
+    beta: 0.1
+    scale_unk: 0.05
+    beam_size: 64
+    cutoff_prob: 0.999
+    word_boundary_token: '#'
+    time_scale: 4
+  segmenter:
+    energy_threshold: 0.000020
+    max_gap: 0.75
+    max_duration: 8
+  cem:
+    model_path: "models/cem.onnx"
+    blank_index: 93
+    space_index: 92
+  # cem:
+  #   model_path: "models/cem.onnx"
+  #   blank_index: 93
+  #   space_index: 92
